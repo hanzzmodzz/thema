@@ -414,6 +414,31 @@ EOF
   
   exit 0
 }
+ubahpw_vps() {
+  echo -e "                                                       "
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "${GREEN}[+]                    UBAH PASSWORD VPS            [+]${NC}"
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "                                                       "
+read -p "Masukkan Pw Baru: " pw
+read -p "Masukkan Ulang Pw Baru " pw
+
+passwd <<EOF
+$pw
+$pw
+
+EOF
+
+
+  echo -e "                                                       "
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "${GREEN}[+]                 GANTI PW VPS SUKSES         [+]${NC}"
+  echo -e "${GREEN}[+] =============================================== [+]${NC}"
+  echo -e "                                                       "
+  sleep 2
+  
+  exit 0
+}
 # Main script
 display_welcome
 install_jq
@@ -447,6 +472,7 @@ while true; do
   echo "5. Uninstall Panel"
   echo "6. Stellar Theme"
   echo "7. Hack Back Panel"
+  echo "8. Ubah Pw Vps"
   echo "x. Exit"
   echo -e "Masukkan pilihan 1/2/x:"
   read -r MENU_CHOICE
@@ -473,6 +499,9 @@ while true; do
       ;;
       7)
       hackback_panel
+      ;;
+      8)
+      ubahpw_vps
       ;;
     x)
       echo "Keluar dari skrip."
